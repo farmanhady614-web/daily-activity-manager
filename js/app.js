@@ -1,6 +1,6 @@
 // Initialize Supabase
 const SUPABASE_URL = 'https://yaimzxvzlihtfazznkrz.supabase.co'; // Ganti dengan URL Supabase Anda
-const SUPABASE_KEY = '4AF3/jcdr628DaR7vqCzhYMlYIs9JqEwCzk0At5sumScxVIZhMnwUMF+DLb956HjdtyJ13JSVBzqAW2JgTi+7Q=='; // Ganti dengan anon key Supabase Anda
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhaW16eHZ6bGlodGZhenpua3J6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDUxODIsImV4cCI6MjA5MDk4MTE4Mn0.STaSGBTNF881muD0T_Wm74UvYbLWYRAU13ev3OmtLwE'; // Ganti dengan anon key Supabase Anda
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ============================================
