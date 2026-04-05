@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Daily Activity Manager | Produktivitas Harian</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Toggle Theme Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-check-circle"></i> DailyManager</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-view="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </button>
+                <button class="nav-item" data-view="tasks">
+                    <i class="fas fa-tasks"></i> Tugas Harian
+                </button>
+                <button class="nav-item" data-view="schedule">
+                    <i class="fas fa-clock"></i> Time Blocking
+                </button>
+                <button class="nav-item" data-view="calendar">
+                    <i class="fas fa-calendar-alt"></i> Kalender
+                </button>
+                <button class="nav-item" data-view="pomodoro">
+                    <i class="fas fa-hourglass-half"></i> Pomodoro Timer
+                </button>
+                <button class="nav-item" data-view="habits">
+                    <i class="fas fa-heartbeat"></i> Habit Tracker
+                </button>
+                <button class="nav-item" data-view="journal">
+                    <i class="fas fa-book"></i> Jurnal Refleksi
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboard" class="view active">
+                <h1>Dashboard</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Total Tugas</h3>
+                        <p id="totalTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Selesai</h3>
+                        <p id="completedTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Produktivitas</h3>
+                        <p id="productivityRate">0%</p>
+                    </div>
+                </div>
+                <div class="recent-tasks">
+                    <h3>Tugas Terbaru</h3>
+                    <div id="recentTasksList"></div>
+                </div>
+            </div>
+
+            <!-- Tasks View -->
+            <div id="tasks" class="view">
+                <h1>Manajemen Tugas</h1>
+                <div class="task-form">
+                    <input type="text" id="taskTitle" placeholder="Nama tugas...">
+                    <select id="taskPriority">
+                        <option value="tinggi">🔥 Tinggi</option>
+                        <option value="sedang">⚡ Sedang</option>
+                        <option value="rendah">✅ Rendah</option>
+                    </select>
+                    <select id="taskCategory">
+                        <option value="pekerjaan">💼 Pekerjaan</option>
+                        <option value="kuliah">📚 Kuliah/Sekolah</option>
+                        <option value="pribadi">🏠 Pribadi</option>
+                    </select>
+                    <input type="datetime-local" id="taskDueDate">
+                    <button id="addTaskBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Tambah Tugas
+                    </button>
+                </div>
+                <div id="tasksList" class="tasks-list"></div>
+            </div>
+
+            <!-- Schedule/Time Blocking View -->
+            <div id="schedule" class="view">
+                <h1>Time Blocking Schedule</h1>
+                <div class="time-slots" id="timeSlots"></div>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="calendar" class="view">
+                <h1>Kalender Tugas</h1>
+                <div class="calendar-header">
+                    <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <h2 id="currentMonthYear"></h2>
+                    <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+
+            <!-- Pomodoro Timer View -->
+            <div id="pomodoro" class="view">
+                <h1>Pomodoro Timer</h1>
+                <div class="pomodoro-container">
+                    <div class="timer-display" id="timerDisplay">25:00</div>
+                    <div class="timer-controls">
+                        <button id="startTimer" class="btn-primary">Mulai</button>
+                        <button id="pauseTimer" class="btn-secondary">Jeda</button>
+                        <button id="resetTimer" class="btn-secondary">Reset</button>
+                    </div>
+                    <div class="session-type">
+                        <span id="sessionLabel">Waktu Fokus</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habits Tracker View -->
+            <div id="habits" class="view">
+                <h1>Habit Tracker</h1>
+                <div class="add-habit">
+                    <input type="text" id="habitName" placeholder="Kebiasaan baru...">
+                    <button id="addHabitBtn" class="btn-primary">Tambah</button>
+                </div>
+                <div id="habitsList" class="habits-list"></div>
+            </div>
+
+            <!-- Journal View -->
+            <div id="journal" class="view">
+                <h1>Jurnal Refleksi Harian</h1>
+                <textarea id="journalEntry" placeholder="Tulis refleksi harian Anda di sini...&#10;&#10;Apa yang berjalan lancar hari ini?&#10;Apa yang bisa diperbaiki besok?&#10;Apa yang Anda pelajari?" rows="10"></textarea>
+                <button id="saveJournalBtn" class="btn-primary">Simpan Jurnal</button>
+                <div id="previousJournals"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/pomodoro.js"></script>
+    <script src="js/habits.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
